@@ -68,14 +68,4 @@ public class CustomersDaoFakeImpl implements CustomersDao {
         return new ArrayList<>(customers.values());
     }
     
-    @Override
-    public List<Customers> readByCustomer(Long customer_id) {
-        List<Customers> result = new ArrayList<>();
-        for(Customers customer : customers.values()) {
-            if(customer.getId() == customer_id) {
-                result.add(customer);
-            }
-        }
-        return result;
-    }
 }

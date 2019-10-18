@@ -65,14 +65,4 @@ public class ManagersDaoFakeImpl implements ManagersDao {
         return new ArrayList<>(managers.values());
     }
     
-    @Override
-    public List<Managers> readByManager(Long manager_id) {
-        List<Managers> result = new ArrayList<>();
-        for(Managers manager : managers.values()) {
-            if(manager.getId() == manager_id) {
-                result.add(manager);
-            }
-        }
-        return result;
-    }
 }
