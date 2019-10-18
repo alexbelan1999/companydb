@@ -28,6 +28,7 @@ public class CustomersDaoFakeImpl implements CustomersDao {
         customer.setTotal_pnumber(0);
         customer.setComplet_pnumber(0);
         customers.put(customer.getId(), customer);
+        customer = new Customers();
         customer.setId(3L);
         customer.setName("iTechArt");
         customer.setAddress("Коммунистическая ул. 16");
