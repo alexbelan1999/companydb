@@ -30,11 +30,11 @@ public class Customers extends Entity {
         this.total_pnumber = number;
     }
     
-    public Integer getComplet_pnumbe() {
+    public Integer getComplet_pnumber() {
         return complet_pnumber;
     }
     
-    public void setComplet_pnumbe(Integer number) {
+    public void setComplet_pnumber(Integer number) {
         this.complet_pnumber = number;
     }
 }

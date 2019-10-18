@@ -19,20 +19,20 @@ public class CustomersDaoFakeImpl implements CustomersDao {
         customer.setName("Lacit");
         customer.setAddress("ул. Лазо 149");
         customer.setTotal_pnumber(0);
-        customer.setComplet_pnumbe(0);
+        customer.setComplet_pnumber(0);
         customers.put(customer.getId(), customer);
         customer = new Customers();
         customer.setId(2L);
         customer.setName("EPAM");
         customer.setAddress("проспект Строителей 11A");
         customer.setTotal_pnumber(0);
-        customer.setComplet_pnumbe(0);
+        customer.setComplet_pnumber(0);
         customers.put(customer.getId(), customer);
         customer.setId(3L);
         customer.setName("iTechArt");
         customer.setAddress("Коммунистическая ул. 16");
         customer.setTotal_pnumber(0);
-        customer.setComplet_pnumbe(0);
+        customer.setComplet_pnumber(0);
         customers.put(customer.getId(), customer);
     }
 
