@@ -5,8 +5,8 @@ public class Projects extends Entity {
     private String start_date;
     private String plan_end_date;
     private String end_date;
-    private Integer customer_id;
-    private Integer manager_id;
+    private Customers customer;
+    private Managers manager;
     private Integer success;
     
     public String getProject_name() {
@@ -41,20 +41,20 @@ public class Projects extends Entity {
         this.end_date = date;
     }
     
-    public Integer getCustomer_id() {
-        return customer_id;
+    public Customers getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Integer id) {
-        this.customer_id = id;
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
     }
     
-    public Integer getManager_id() {
-        return manager_id;
+    public Managers getManager() {
+        return manager;
     }
 
-    public void setManager_id(Integer id) {
-        this.manager_id = id;
+    public void setManager(Managers manager) {
+        this.manager = manager;
     }
     
     public Integer getSuccess() {
