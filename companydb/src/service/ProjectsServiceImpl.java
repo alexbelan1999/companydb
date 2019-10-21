@@ -51,10 +51,8 @@ public class ProjectsServiceImpl implements ProjectsService {
     public List<Projects> findByCustomer(Long customer_id) {
         List<Projects> projects = projectDao.readByCustomer(customer_id);
         Map<Long, Customers> customers = new HashMap<>();
-        Map<Long, Managers> managers = new HashMap<>();
         for(Projects project : projects) {
             Customers customer = project.getCustomer();
-            Managers manager = project.getManager();
 
             if(customer != null) {
                 Long id = customer.getId();
@@ -66,36 +64,15 @@ public class ProjectsServiceImpl implements ProjectsService {
                 project.setCustomer(customer);
             }
 
-            if(manager != null) {
-                Long id = manager.getId();
-                manager = managers.get(id);
-                if(manager == null) {
-                    manager = managerDao.read(id);
-                    managers.put(id, manager);
-                }
-                project.setManager(manager);
-            }
         }
         return projects;
     }
     
     public List<Projects> findByManager(Long manager_id) {
         List<Projects> projects = projectDao.readByManager(manager_id);
-        Map<Long, Customers> customers = new HashMap<>();
         Map<Long, Managers> managers = new HashMap<>();
         for(Projects project : projects) {
-            Customers customer = project.getCustomer();
             Managers manager = project.getManager();
-
-            if(customer != null) {
-                Long id = customer.getId();
-                customer = customers.get(id);
-                if(customer == null) {
-                    customer = customerDao.read(id);
-                    customers.put(id, customer);
-                }
-                project.setCustomer(customer);
-            }
 
             if(manager != null) {
                 Long id = manager.getId();
