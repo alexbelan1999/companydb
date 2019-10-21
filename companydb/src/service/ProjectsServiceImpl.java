@@ -53,7 +53,6 @@ public class ProjectsServiceImpl implements ProjectsService {
         Map<Long, Customers> customers = new HashMap<>();
         for(Projects project : projects) {
             Customers customer = project.getCustomer();
-
             if(customer != null) {
                 Long id = customer.getId();
                 customer = customers.get(id);
@@ -73,7 +72,6 @@ public class ProjectsServiceImpl implements ProjectsService {
         Map<Long, Managers> managers = new HashMap<>();
         for(Projects project : projects) {
             Managers manager = project.getManager();
-
             if(manager != null) {
                 Long id = manager.getId();
                 manager = managers.get(id);
