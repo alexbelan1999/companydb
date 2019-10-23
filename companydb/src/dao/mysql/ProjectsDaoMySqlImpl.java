@@ -189,7 +189,7 @@ public class ProjectsDaoMySqlImpl extends BaseDaoMySqlImpl implements ProjectsDa
     
     @Override
     public List<Projects> readAll() throws DaoException {
-        String sql = "SELECT `customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects`";
+        String sql = "SELECT `id`,`customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects`";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {

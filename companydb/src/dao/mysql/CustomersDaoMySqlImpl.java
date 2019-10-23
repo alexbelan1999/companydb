@@ -65,7 +65,7 @@ public class CustomersDaoMySqlImpl extends BaseDaoMySqlImpl implements Customers
 
     @Override
     public List<Customers> readAll() throws DaoException {
-        String sql = "SELECT `name`, `adress`,`total_pnumber`,`complet_pnumber` FROM `customers`";
+        String sql = "SELECT `id`,`name`, `adress`,`total_pnumber`,`complet_pnumber` FROM `customers`";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {

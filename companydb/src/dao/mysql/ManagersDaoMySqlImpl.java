@@ -63,7 +63,7 @@ public class ManagersDaoMySqlImpl extends BaseDaoMySqlImpl implements ManagersDa
 
     @Override
     public List<Managers> readAll() throws DaoException {
-        String sql = "SELECT `surname`, `name`,`patronymic` FROM `managers`";
+        String sql = "SELECT `id`,`surname`, `name`,`patronymic` FROM `managers`";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
