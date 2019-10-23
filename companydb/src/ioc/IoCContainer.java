@@ -5,9 +5,10 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IoCContainer {
+public class IoCContainer implements AutoCloseable {
     private static Map<Class<?>, Class<?>> dependencyInversionMap = new HashMap<>();
     private static Map<Class<?>, Map<Class<?>, Method>> dependencyInjectionMap = new HashMap<>();
+    private static Map<Class<?>, Factory<?>> factories = new HashMap<>();
 
     private Map<Class<?>, Object> cache = new HashMap<>();
 
@@ -27,6 +28,12 @@ public class IoCContainer {
                             Method injector = entry.getValue();
                             injector.invoke(object, get(dependency));
                         }
+                    }
+                } else {
+                    Factory<?> factory = factories.get(key);
+                    if(factory != null) {
+                        object = (T)factory.get();
+                        cache.put(key, object);
                     }
                 }
             } catch(InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -57,6 +64,25 @@ public class IoCContainer {
             }
         } catch(ClassNotFoundException | NoSuchMethodException e) {
             throw new IoCException(e);
+        }
+    }
+
+    public static void registerFactory(String abstraction, String factory) throws IoCException {
+        try {
+            Class<?> actualAbstraction = Class.forName(abstraction);
+            Class<?> actualFactory = Class.forName(factory);
+            factories.put(actualAbstraction, (Factory<?>)actualFactory.newInstance());
+        } catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new IoCException(e);
+        }
+    }
+
+    @Override
+    public void close() {
+        for(Object object : cache.values()) {
+            if(object instanceof AutoCloseable) {
+                try { ((AutoCloseable)object).close(); } catch(Exception e) {}
+            }
         }
     }
 }
