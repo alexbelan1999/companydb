@@ -5,9 +5,15 @@ import java.util.Map;
 
 public class IoCConfigurer {
     public static void configure() throws IoCException {
-        IoCContainer.registerClass("dao.CustomersDao", "dao.fake.CustomersDaoFakeImpl");
-        IoCContainer.registerClass("dao.ManagersDao", "dao.fake.ManagersDaoFakeImpl");
-        IoCContainer.registerClass("dao.ProjectsDao", "dao.fake.ProjectsDaoFakeImpl");
+        IoCContainer.registerFactory("java.sql.Connection", "pool.ConnectionFactory");
+        
+        Map<String, String> daoDependencies = new HashMap<>();
+        daoDependencies.put("java.sql.Connection", "setConnection");
+        
+        IoCContainer.registerClass("dao.CustomersDao", "dao.mysql.CustomersDaoMySqlImpl", daoDependencies);
+        IoCContainer.registerClass("dao.ManagersDao", "dao.mysql.ManagersDaoMySqlImpl", daoDependencies);
+        IoCContainer.registerClass("dao.ProjectsDao", "dao.mysql.ProjectsDaoMySqlImpl", daoDependencies);
+        
         
         Map<String, String> customerServiceDependencies = new HashMap<>();
         customerServiceDependencies.put("dao.CustomersDao", "setCustomersDao");
