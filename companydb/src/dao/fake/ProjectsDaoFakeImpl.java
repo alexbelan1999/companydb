@@ -105,17 +105,6 @@ public class ProjectsDaoFakeImpl implements ProjectsDao {
     }
     
     @Override
-    public List<Projects> readByProject(Long project_id) {
-        List<Projects> result = new ArrayList<>();
-        for(Projects project : projects.values()) {
-            if(project.getId() == project_id) {
-                result.add(project);
-            }
-        }
-        return result;
-    }
-    
-    @Override
     public List<Projects> readByCustomer(Long customer_id) {
         List<Projects> result = new ArrayList<>();
         for(Projects project : projects.values()) {
