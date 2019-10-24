@@ -98,9 +98,9 @@ public class ProjectsDaoMySqlImpl extends BaseDaoMySqlImpl implements ProjectsDa
     public List<Projects> readByCustomer(Long customer_id) throws DaoException {
         String sql = null;
         if(customer_id != null) {
-            sql = "SELECT `customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `customer_id` = ?";
+            sql = "SELECT `id`,`customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `customer_id` = ?";
         } else {
-            sql = "SELECT `customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `customer_id` IS NULL";
+            sql = "SELECT `id`,`customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `customer_id` IS NULL";
         }
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -145,9 +145,9 @@ public class ProjectsDaoMySqlImpl extends BaseDaoMySqlImpl implements ProjectsDa
     public List<Projects> readByManager(Long manager_id) throws DaoException {
         String sql = null;
         if(manager_id != null) {
-            sql = "SELECT `customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `manager_id` = ?";
+            sql = "SELECT `id`,`customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `manager_id` = ?";
         } else {
-            sql = "SELECT `customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `manager_id` IS NULL";
+            sql = "SELECT `id`,`customer_id`, `project_name`, `start_date`, `plan_end_date`, `end_date`, `manager_id`, `success` FROM `projects` WHERE `manager_id` IS NULL";
         }
         PreparedStatement statement = null;
         ResultSet resultSet = null;

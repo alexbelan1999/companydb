@@ -13,7 +13,7 @@ import company.Projects;
 
 public class ProjectsServiceFindAllTest {
     public static void main(String[] args) throws IoCException, ServiceException, PoolException {
-        ConnectionPool.getInstance().init("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/companydb?useUnicode=true&characterEncoding=UTF8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "1234");
+        ConnectionPool.getInstance().init("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/companydb?useUnicode=true&characterEncoding=UTF8&useSSL=false&allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "1234");
         IoCConfigurer.configure();
         IoCContainer ioc = new IoCContainer();
         ProjectsService projectService = ioc.get(ProjectsService.class);
