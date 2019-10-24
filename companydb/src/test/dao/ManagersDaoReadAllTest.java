@@ -3,13 +3,13 @@ package test.dao;
 import java.util.List;
 
 import test.Utility;
-
+import dao.DaoException;
 import dao.ManagersDao;
 import dao.fake.ManagersDaoFakeImpl;
 import company.Managers;
 
 public class ManagersDaoReadAllTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DaoException{
         ManagersDao managerDao = new ManagersDaoFakeImpl();
         List<Managers> managers = managerDao.readAll();
         System.out.println("Список всех менеджеров");

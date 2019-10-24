@@ -1,14 +1,14 @@
 package test.dao;
 
 import java.util.List;
-
+import dao.DaoException;
 import test.Utility;
 import dao.ProjectsDao;
 import dao.fake.ProjectsDaoFakeImpl;
 import company.Projects;
 
 public class ProjectsDaoReadByManagerTest {
-    private static void output(ProjectsDao projectDao, Long manager_id) {
+    private static void output(ProjectsDao projectDao, Long manager_id) throws DaoException {
         List<Projects> projects = projectDao.readByManager(manager_id);
         System.out.printf("Список всех  проектов менеджера [%d]:\n", manager_id);
         System.out.println("================================================");
@@ -18,7 +18,7 @@ public class ProjectsDaoReadByManagerTest {
         System.out.println();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DaoException {
         ProjectsDao projectsDao = new ProjectsDaoFakeImpl();
         output(projectsDao, 1L);
         output(projectsDao, 2L);
