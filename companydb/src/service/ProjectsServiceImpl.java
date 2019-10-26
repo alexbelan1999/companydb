@@ -74,6 +74,37 @@ public class ProjectsServiceImpl implements ProjectsService {
         }
     }
     
+    @Override
+    public Projects findById(Long id) throws ServiceException {
+        try {
+            return projectDao.read(id);
+        } catch(DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void save(Projects project) throws ServiceException {
+        try {
+            if(project.getId() != null) {
+                projectDao.update(project);
+            } else {
+                projectDao.create(project);
+            }
+        } catch(DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void delete(Long id) throws ServiceException {
+        try {
+            projectDao.delete(id);
+        } catch(DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+    
     public void setCustomersDao(CustomersDao customerDao) {
         this.customerDao = customerDao;
     }
