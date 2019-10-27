@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>companydb</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  
+  <context-param>
+		<param-name>jdbc-driver</param-name>
+		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-url</param-name>
+		
+		<param-value>jdbc:mysql://localhost:3306/companydb?useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-user</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-password</param-name>
+		<param-value>1234</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pool-min-size</param-name>
+		<param-value>1</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pool-max-size</param-name>
+		<param-value>100</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pool-connection-validation-timeout</param-name>
+		<param-value>0</param-value>
+	</context-param>
+  	
+  	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>web.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>web.ApplicationStartListener</listener-class>
+	</listener>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/WEB-INF/jsp/error.jsp</location>
+	</error-page>
 </web-app>
