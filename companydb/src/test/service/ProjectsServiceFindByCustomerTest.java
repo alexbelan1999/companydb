@@ -26,15 +26,16 @@ public class ProjectsServiceFindByCustomerTest {
     public static void main(String[] args) throws IoCException, ServiceException, PoolException {
         ConnectionPool.getInstance().init("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/companydb?useUnicode=true&characterEncoding=UTF8&useSSL=false&allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "1234");
         IoCConfigurer.configure();
-        IoCContainer ioc = new IoCContainer();
-        ProjectsService projectService = ioc.get(ProjectsService.class);
-        System.out.println("======================================================");
-        output(projectService, 1L);
-        output(projectService, 2L);
-        output(projectService, 3L);
-        output(projectService, 4L);
-        output(projectService, 5L);
-        ConnectionPool.getInstance().destroy();
+        try(IoCContainer ioc = new IoCContainer()) {
+            ProjectsService projectService = ioc.get(ProjectsService.class);
+            System.out.println("======================================================");
+            output(projectService, 1L);
+            output(projectService, 2L);
+            output(projectService, 3L);
+            output(projectService, 4L);
+            output(projectService, 5L);
+        } finally {
+            ConnectionPool.getInstance().destroy();
+        }
     }
-    
 }
