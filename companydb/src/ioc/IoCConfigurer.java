@@ -9,34 +9,34 @@ public class IoCConfigurer {
         IoCContainer.registerFactory("web.Action", "web.ActionFactory");
         
         Map<String, String> customerActionsDependencies = map(pair("service.CustomersService", "setCustomersService"));
-        ActionFactory.registerAction("/customer/list", "web.customer.CustomersListActionImpl");
-        DIContainer.registerClass("web.customer.CustomersListActionImpl", customerActionsDependencies);
-        ActionFactory.registerAction("/customer/edit", "web.customer.CustomersEditActionImpl");
-        DIContainer.registerClass("web.customer.CustomersEditActionImpl", customerActionsDependencies);
-        ActionFactory.registerAction("/customer/save", "web.customer.CustomersSaveActionImpl");
-        DIContainer.registerClass("web.customer.CustomersSaveActionImpl", customerActionsDependencies);
-        ActionFactory.registerAction("/customer/delete", "web.customer.CustomersDeleteActionImpl");
-        DIContainer.registerClass("web.customer.CustomersDeleteActionImpl", customerActionsDependencies);
+        ActionFactory.registerAction("/customer/list", "web.customers.CustomersListActionImpl");
+        DIContainer.registerClass("web.customers.CustomersListActionImpl", customerActionsDependencies);
+        ActionFactory.registerAction("/customer/edit", "web.customers.CustomersEditActionImpl");
+        DIContainer.registerClass("web.customers.CustomersEditActionImpl", customerActionsDependencies);
+        ActionFactory.registerAction("/customer/save", "web.customers.CustomersSaveActionImpl");
+        DIContainer.registerClass("web.customers.CustomersSaveActionImpl", customerActionsDependencies);
+        ActionFactory.registerAction("/customer/delete", "web.customers.CustomersDeleteActionImpl");
+        DIContainer.registerClass("web.customers.CustomersDeleteActionImpl", customerActionsDependencies);
         
         Map<String, String> managerActionsDependencies = map(pair("service.ManagersService", "setManagersService"));
-        ActionFactory.registerAction("/manager/list", "web.manager.ManagersListActionImpl");
-        DIContainer.registerClass("web.manager.ManagersListActionImpl", managerActionsDependencies);
-        ActionFactory.registerAction("/manager/edit", "web.manager.ManagersEditActionImpl");
-        DIContainer.registerClass("web.manager.ManagersEditActionImpl", managerActionsDependencies);
-        ActionFactory.registerAction("/manager/save", "web.manager.ManagersSaveActionImpl");
-        DIContainer.registerClass("web.manager.ManagersSaveActionImpl", managerActionsDependencies);
-        ActionFactory.registerAction("/manager/delete", "web.manager.ManagersDeleteActionImpl");
-        DIContainer.registerClass("web.manager.ManagersDeleteActionImpl", managerActionsDependencies);
+        ActionFactory.registerAction("/manager/list", "web.managers.ManagersListActionImpl");
+        DIContainer.registerClass("web.managers.ManagersListActionImpl", managerActionsDependencies);
+        ActionFactory.registerAction("/manager/edit", "web.managers.ManagersEditActionImpl");
+        DIContainer.registerClass("web.managers.ManagersEditActionImpl", managerActionsDependencies);
+        ActionFactory.registerAction("/manager/save", "web.managers.ManagersSaveActionImpl");
+        DIContainer.registerClass("web.managers.ManagersSaveActionImpl", managerActionsDependencies);
+        ActionFactory.registerAction("/manager/delete", "web.managers.ManagersDeleteActionImpl");
+        DIContainer.registerClass("web.managers.ManagersDeleteActionImpl", managerActionsDependencies);
         
         Map<String, String> projectActionsDependencies = map(pair("service.ProjectsService", "setProjectsService"));
-        ActionFactory.registerAction("/project/list", "web.project.ProjectsListActionImpl");
-        DIContainer.registerClass("web.project.ProjectsListActionImpl", projectActionsDependencies);
-        ActionFactory.registerAction("/project/edit", "web.project.ProjectsEditActionImpl");
-        DIContainer.registerClass("web.project.ProjectsEditActionImpl", projectActionsDependencies);
-        ActionFactory.registerAction("/project/save", "web.project.ProjectsSaveActionImpl");
-        DIContainer.registerClass("web.project.ProjectsSaveActionImpl", projectActionsDependencies);
-        ActionFactory.registerAction("/project/delete", "web.project.ProjectsDeleteActionImpl");
-        DIContainer.registerClass("web.project.ProjectsDeleteActionImpl", projectActionsDependencies);
+        ActionFactory.registerAction("/project/list", "web.projects.ProjectsListActionImpl");
+        DIContainer.registerClass("web.projects.ProjectsListActionImpl", projectActionsDependencies);
+        ActionFactory.registerAction("/project/edit", "web.projects.ProjectsEditActionImpl");
+        DIContainer.registerClass("web.projects.ProjectsEditActionImpl", projectActionsDependencies);
+        ActionFactory.registerAction("/project/save", "web.projects.ProjectsSaveActionImpl");
+        DIContainer.registerClass("web.projects.ProjectsSaveActionImpl", projectActionsDependencies);
+        ActionFactory.registerAction("/project/delete", "web.projects.ProjectsDeleteActionImpl");
+        DIContainer.registerClass("web.projects.ProjectsDeleteActionImpl", projectActionsDependencies);
         
         IoCContainer.registerFactory("java.sql.Connection", "pool.ConnectionFactory");
         
