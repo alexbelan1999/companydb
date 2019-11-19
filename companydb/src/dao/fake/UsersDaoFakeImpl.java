@@ -82,4 +82,16 @@ public class UsersDaoFakeImpl implements UsersDao {
         }
         return result;
     }
+    
+    @Override
+    public Users readByLogin(String login) {
+        Users user = new Users();
+        for(Users user1 : users.values()) {
+            if (user1.getLogin().contains(login)) {
+                user = user1;
+                break;
+            }
+        }
+        return user;
+    }
 }

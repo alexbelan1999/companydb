@@ -55,6 +55,15 @@ public class UsersServiceImpl implements UsersService {
             throw new ServiceException(e);
         }
     }
+    
+    @Override
+    public  Users findByLogin(String login) throws ServiceException {
+        try {
+            return userDao.readByLogin(login);
+        } catch(DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 
     @Override
     public void save(Users user) throws ServiceException {

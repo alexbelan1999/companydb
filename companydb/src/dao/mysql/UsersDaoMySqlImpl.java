@@ -110,6 +110,37 @@ public class UsersDaoMySqlImpl extends BaseDaoMySqlImpl implements UsersDao {
     }
     
     @Override
+    public Users readByLogin(String login) throws DaoException {
+        String sql = "SELECT `id`, `login`, `password`, `role_id` FROM `users` WHERE `login` = ?";
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setString(1, login);
+            resultSet = statement.executeQuery();
+            Users user = null;
+            if(resultSet.next()) {
+                user = new Users();
+                user.setId(resultSet.getLong("id"));
+                user.setLogin(resultSet.getString("login"));
+                user.setPassword(resultSet.getString("password"));
+                
+                Long role_id = resultSet.getLong("role_id");
+                if(!resultSet.wasNull()) {
+                    user.setRole(new Roles());
+                    user.getRole().setId(role_id);
+                }
+            }
+            return user;
+        } catch(SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            try { resultSet.close(); } catch(Exception e) {}
+            try { statement.close(); } catch(Exception e) {}
+        }
+    }
+    
+    @Override
     public List<Users> readAll() throws DaoException {
         String sql = "SELECT `id`,`login`, `password`, `role_id` FROM `users`";
         PreparedStatement statement = null;
