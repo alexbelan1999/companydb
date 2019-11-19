@@ -38,6 +38,30 @@ public class IoCConfigurer {
         ActionFactory.registerAction("/project/delete", "web.projects.ProjectsDeleteActionImpl");
         DIContainer.registerClass("web.projects.ProjectsDeleteActionImpl", projectActionsDependencies);
         
+        Map<String, String> roleActionsDependencies = map(pair("service.RolesService", "setRolesService"));
+        ActionFactory.registerAction("/role/list", "web.roles.RolesListActionImpl");
+        DIContainer.registerClass("web.roles.RolesListActionImpl", roleActionsDependencies);
+        ActionFactory.registerAction("/role/edit", "web.roles.RolesEditActionImpl");
+        DIContainer.registerClass("web.roles.RolesEditActionImpl", roleActionsDependencies);
+        ActionFactory.registerAction("/role/save", "web.roles.RolesSaveActionImpl");
+        DIContainer.registerClass("web.roles.RolesSaveActionImpl", roleActionsDependencies);
+        ActionFactory.registerAction("/role/delete", "web.roles.RolesDeleteActionImpl");
+        DIContainer.registerClass("web.roles.RolesDeleteActionImpl", roleActionsDependencies);
+        
+        Map<String, String> userActionsDependencies = map(pair("service.UsersService", "setUsersService"));
+        ActionFactory.registerAction("/user/list", "web.users.UsersListActionImpl");
+        DIContainer.registerClass("web.users.UsersListActionImpl", userActionsDependencies);
+        ActionFactory.registerAction("/user/edit", "web.users.UsersEditActionImpl");
+        DIContainer.registerClass("web.users.UsersEditActionImpl", userActionsDependencies);
+        ActionFactory.registerAction("/user/save", "web.users.UsersSaveActionImpl");
+        DIContainer.registerClass("web.users.UsersSaveActionImpl", userActionsDependencies);
+        ActionFactory.registerAction("/user/delete", "web.users.UsersDeleteActionImpl");
+        DIContainer.registerClass("web.users.UsersDeleteActionImpl", userActionsDependencies);
+        ActionFactory.registerAction("/user/login", "web.users.UsersLoginActionImpl");
+        DIContainer.registerClass("web.users.UsersLoginActionImpl", userActionsDependencies);
+        ActionFactory.registerAction("/user/logout", "web.users.UsersLogoutActionImpl");
+        DIContainer.registerClass("web.users.UsersLogoutActionImpl", userActionsDependencies);
+        
         IoCContainer.registerFactory("java.sql.Connection", "pool.ConnectionFactory");
         
         Map<String, String> daoDependencies = map(pair("java.sql.Connection", "setConnection"));
@@ -51,6 +75,12 @@ public class IoCConfigurer {
         IoCContainer.registerClass("dao.ProjectsDao", "dao.mysql.ProjectsDaoMySqlImpl");
         DIContainer.registerClass("dao.mysql.ProjectsDaoMySqlImpl", daoDependencies);
         
+        IoCContainer.registerClass("dao.RolesDao", "dao.mysql.RolesDaoMySqlImpl");
+        DIContainer.registerClass("dao.mysql.RolesDaoMySqlImpl", daoDependencies);
+        
+        IoCContainer.registerClass("dao.UsersDao", "dao.mysql.UsersDaoMySqlImpl");
+        DIContainer.registerClass("dao.mysql.UsersDaoMySqlImpl", daoDependencies);
+        
         IoCContainer.registerClass("service.CustomersService", "service.CustomersServiceImpl");
         DIContainer.registerClass("service.CustomersServiceImpl", map(pair("dao.CustomersDao", "setCustomersDao")));
         
@@ -60,6 +90,11 @@ public class IoCConfigurer {
         IoCContainer.registerClass("service.ProjectsService", "service.ProjectsServiceImpl");
         DIContainer.registerClass("service.ProjectsServiceImpl", map(pair("dao.CustomersDao", "setCustomersDao"), pair("dao.ManagersDao", "setManagersDao"), pair("dao.ProjectsDao", "setProjectsDao")));
                 
+        IoCContainer.registerClass("service.RolesService", "service.RolesServiceImpl");
+        DIContainer.registerClass("service.RolesServiceImpl", map(pair("dao.RolesDao", "setRolesDao")));
+        
+        IoCContainer.registerClass("service.UsersService", "service.UsersServiceImpl");
+        DIContainer.registerClass("service.UsersServiceImpl", map(pair("dao.RolesDao", "setRolesDao"), pair("dao.UsersDao", "setUsersDao")));
     }
     
     private static Map<String, String> map(String[] ... strings) {
