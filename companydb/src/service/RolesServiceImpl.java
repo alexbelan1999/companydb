@@ -49,7 +49,7 @@ public class RolesServiceImpl implements RolesService {
         }
     }
 
-    public void setCustomersDao(RolesDao roleDao) throws ServiceException {
+    public void setRolesDao(RolesDao roleDao) throws ServiceException {
         this.roleDao = roleDao;
     }
 }
