@@ -14,4 +14,13 @@ public class Utility {
     public static String toString(Projects project) {
         return String.format("[%d] | Название проекта: %s | Дата начала: %s | Планируемая дата окончания: %s | Дата окончания: %s | Заказчик: %s | Менеджер: %s | Успех: %s", project.getId(),project.getProject_name(),project.getStart_date(),project.getPlan_end_date(),project.getEnd_date(), project.getCustomer() != null ? toString(project.getCustomer()) : null, project.getManager() != null ? toString(project.getManager()) : null, project.getSuccess());
     }
+    
+    public static String toString(Roles role) {
+        return String.format("[%d] | Роль: %s", role.getId(),role.getRole());
+    }
+    
+    public static String toString(Users user) {
+        return String.format("[%d] | Логин: %s | Пароль: %s | Роль: %s", user.getId(),user.getLogin(),user.getPassword(),user.getRole() != null ? toString(user.getRole()) : null);
+    }
+    
 }
