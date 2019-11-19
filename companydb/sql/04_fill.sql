@@ -35,3 +35,13 @@ INSERT INTO project_data VALUES (1,1,'Test program','2012-12-12','2013-02-01',NU
   (10,9,'New browser','2017-07-13','2017-10-09','2017-11-19',10,1),
   (11,10,'Hello world','2016-02-21','2018-07-01','2018-04-04',11,0),
   (12,11,'OpenCV','2018-06-24','2018-06-27','2018-06-27',12,1);
+
+insert into `roles`(id,`role`) VALUES 
+	('1','admin'),
+	('2','manager'),
+	('3','user');
+
+insert into `users`(id,`login`,`password`,`role_id`) VALUES 
+	('1','admin','12345',1),
+	('2','manager','1234',2),
+	('3','user','123',3);
