@@ -46,8 +46,8 @@ public class RolesDaoFakeImpl implements RolesDao {
     }
 
     @Override
-    public void update(Roles customer) {
-        roles.put(customer.getId(), customer);
+    public void update(Roles role) {
+        roles.put(role.getId(), role);
     }
 
     @Override
