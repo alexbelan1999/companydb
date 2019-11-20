@@ -83,7 +83,7 @@ public class RolesDaoMySqlImpl extends BaseDaoMySqlImpl implements RolesDao {
 
     @Override
     public void update(Roles role) throws DaoException {
-        String sql = "UPDATE `rolse` SET `role` = ? WHERE `id` = ?";
+        String sql = "UPDATE `roles` SET `role` = ? WHERE `id` = ?";
         PreparedStatement statement = null;
         try {
             statement = getConnection().prepareStatement(sql);
