@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v9.0 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v9.0 Server at localhost" name="Tomcat v9.0 Server at localhost" runtime-id="Apache Tomcat v9.0" server-type="org.eclipse.jst.server.tomcat.90" server-type-id="org.eclipse.jst.server.tomcat.90" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="17">
+    <list key="modules" value0="ServletsAPI::org.eclipse.jst.jee.server:ServletsAPI::jst.web::4.0" value1="WebApp::org.eclipse.jst.jee.server:WebApp::jst.web::4.0" value10="lab::org.eclipse.jst.jee.server:lab::jst.web::4.0" value2="lab2servlet::org.eclipse.jst.jee.server:lab2servlet::jst.web::4.0" value3="lab3jsp::org.eclipse.jst.jee.server:lab3jsp::jst.web::4.0" value4="lab4JDBC::org.eclipse.jst.jee.server:lab4JDBC::jst.web::4.0" value5="testdb::org.eclipse.jst.jee.server:testdb::jst.web::4.0" value6="TestJDBC::org.eclipse.jst.jee.server:TestJDBC::jst.web::4.0" value7="lab5test::org.eclipse.jst.jee.server:lab5test::jst.web::4.0" value8="lab5test2::org.eclipse.jst.jee.server:lab5test2::jst.web::4.0" value9="lab5::org.eclipse.jst.jee.server:lab5::jst.web::4.0"/>
+  </server>
+</servers>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab 5</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #eee;
+        }
+        .btn {
+            height: fit-content;
+            display: block;
+            padding: 10px 10px;
+            text-align: center;
+            background-color: #000;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #fdd32a;
+        }
+        h1 {
+            color: #000;
+        }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            height: 8vh;
+            background-color: #000;
+            align-items: center;
+        }
+        .nav, .auth {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .nav__item, .auth a {
+            margin-right: 15px;
+            padding: 10px;
+        }
+        .active-button {
+            background-color: #eee; 
+        }
+
+        .modal-container {
+            padding: 15px 0;
+            width: 450px;
+            margin: 0 auto;
+            background-color: rgb(255, 255, 255);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            text-align: center;  
+        }
+
+        .header-authorization {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .authorization {
+            position: relative;
+            padding-top: 2vh;
+            top: 30px;
+            width: 33%;
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .active-button {
+            background-color: #eee; 
+        }
+        input[type="submit"],[type="text"],[type="login"],[type="password"] {
+            width: 70%;
+            height: 55px;
+            border: none;
+            margin-bottom: 30px;
+            background-color: #eee;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            margin-bottom: 0px;
+        }
+
+        form input[type="checkbox"] {
+            border: none;
+            background-color: #eee;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            margin-right: 10px; 
+        }
+
+        form input[type="submit"] {
+            color: #fff;
+            background-color: #000;
+        }
+
+        .header-modal .button:hover {
+            color: #fff;
+            background-color: #000; 
+        }
+
+        form input[type="submit"]:hover {
+            color: #fff;
+            background-color:#000; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">Lab 5</h1>
+    </header>
+    <section class="authorization">
+        <div class="header-authorization">
+            <h2>Вход</h2>
+        </div>
+        <div class="modal-container">
+            <form class="login" action="/lab5/LoginServlet" method="POST">
+                <label><input type="login" name="login" placeholder="Введите login"></label>
+                <label><input type="password" name="password" placeholder="Введите пароль"></label>
+                <label><p><input type="checkbox" name="checkbox">Чужой комьютер</p></label>
+                <p><input type="submit" name="login" value="Войти"></p>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

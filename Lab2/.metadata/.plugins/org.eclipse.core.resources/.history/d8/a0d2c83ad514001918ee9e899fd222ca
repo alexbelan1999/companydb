@@ -1,0 +1,48 @@
+package by.vsu.project;
+import java.io.IOException;
+import java.sql.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import by.vsu.project.*;
+
+
+@WebServlet("/SaveProjectServlet")
+public class SaveProjectServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+        Project object = new Project();
+        object.setPname(req.getParameter("pname"));
+        try {
+        	object.setCompanyid(Integer.parseInt(req.getParameter("company_id")));
+	        object.setStartdate(new Date(1999,1,12));
+	        object.setPlanenddate(new Date(1999,1,12));
+	        object.setEnddate(new Date(1999,1,12));
+	        object.setManagerid(Integer.parseInt(req.getParameter("managers_id")));
+	        object.setSuccess(req.getParameter("success") != null ? req.getParameter("success").equals("on") : false);
+	        
+	       
+	        String [] date = req.getParameter("start_date").split("-");
+	        String [] date1 = req.getParameter("plan_end_date").split("-");
+	        String [] date2 = req.getParameter("end_date").split("-");
+            object.setStartdate(new Date(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])));
+            object.setPlanenddate(new Date(Integer.parseInt(date1[0]), Integer.parseInt(date1[1]), Integer.parseInt(date1[2])));
+            object.setEnddate(new Date(Integer.parseInt(date2[0]), Integer.parseInt(date2[1]), Integer.parseInt(date2[2])));
+            object.setId(Integer.parseInt(req.getParameter("id")));
+        } catch(NumberFormatException e) {}
+        if(object.getId() == null) {
+            Projects.insert(object);
+        } else {
+            Projects.update(object);
+        }
+
+        resp.sendRedirect(req.getContextPath() + "/index.html");
+	}
+
+}
