@@ -1,0 +1,70 @@
+﻿ DROP DATABASE `poliklinika`
+CREATE DATABASE `poliklinika` DEFAULT CHARACTER SET utf8;
+
+USE `poliklinika`;
+
+CREATE TABLE `roles` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`role` VARCHAR(100) NOT NULL,
+	PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE `users` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`login` VARCHAR(100) NOT NULL,
+	`password` VARCHAR(100) NOT NULL,
+	`role_id` INT NOT NULL,
+	PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+
+CREATE TABLE `doctor` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`special_id` INTEGER NOT NULL ,
+	`surname` VARCHAR(100) NOT NULL,
+	`name` VARCHAR(100) NOT NULL,
+	`patronymic` VARCHAR(100) NOT NULL,
+	`birth_date` VARCHAR(100) NOT NULL,
+	`first_work_date` VARCHAR(100) NOT NULL,
+	`number_of_workplace` VARCHAR(100) NOT NULL,
+	 PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE `speciality` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT ,
+	`name_of_speciality` VARCHAR(100) NOT NULL,
+	`narrow_speciality` BOOLEAN NOT NULL,
+	`rate_of_pay` INTEGER NOT NULL,
+        PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+ALTER TABLE `users` ADD CONSTRAINT `fk_user_rt_role`
+FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`)
+ON UPDATE RESTRICT
+ON DELETE CASCADE;
+
+ALTER TABLE `doctor` ADD CONSTRAINT `fk_doctor_rt_speciality`
+FOREIGN KEY (`special_id`) REFERENCES `speciality`(`id`)
+ON UPDATE RESTRICT
+ON DELETE CASCADE ;
+
+
+INSERT INTO `speciality`
+(`id`, `name_of_speciality`  ,`narrow_speciality`, `rate_of_pay`) VALUES
+(  1 ,           'Лор' ,       TRUE,          '400'       ),
+(  2 ,           'Хирург'  ,    TRUE,         '600'       );
+
+
+
+INSERT INTO `doctor`
+(`id`, `special_id`  , `surname`, `name`,`patronymic`, `birth_date`,`first_work_date`,`number_of_workplace`) VALUES
+(  1 ,      '1' ,      'Gashenow', 'Kirill'   ,'Olegovich' ,    '1978-03-21' ,'1998-03-02'         ,             '234'   ),
+(  2 ,      '2' ,       'Blinow' ,  'Mark'     ,'Timurovich',     '1956-07-07' ,'1993-04-06'        ,             '211'    );
+
+
+insert into `roles`(id,`role`) VALUES 
+('1','admin'),
+('2','medsister');
+insert into `users`(id,`login`,`password`,`role_id`) VALUES 
+('1','n','n',2),
+('2','nn','n',1);
